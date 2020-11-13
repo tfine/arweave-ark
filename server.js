@@ -23,6 +23,8 @@ app.get("/:id/", (request, response) => {
 
 // if word question after arweave id, look from what, where, when, and who, display as metadata
 
+
+// NEED TO MAKE question a question mark, won't work in Express
 app.get("/:id/question", (request, response) => {
   
   let what = "";
@@ -30,7 +32,7 @@ app.get("/:id/question", (request, response) => {
   let when = "";
   let who = "";
 
-  // create arweave url
+  // create arweave url for transaction data
   var arweave_url = `https://${arweave_domain}/tx/${request.params['id']}`;
   
   // options for arweave direction
@@ -46,6 +48,8 @@ app.get("/:id/question", (request, response) => {
       console.error(error);
     }
 
+    // TO-DO: need to verify that this was a valid arweave transaction
+    
     var tags = JSON.parse(body).tags;
     
     for (var tag of tags) {
@@ -55,10 +59,6 @@ app.get("/:id/question", (request, response) => {
 
       if (base64url.decode(tag["name"]) == "what") {
         what = base64url.decode(tag["value"]);
-      }
-
-      if (base64url.decode(tag["name"]) == "where") {
-        where = base64url.decode(tag["value"]);
       }
 
       if (base64url.decode(tag["name"]) == "when") {
@@ -71,7 +71,7 @@ app.get("/:id/question", (request, response) => {
       title: "",
       who: `who: ${who}`,
       what: `what: ${what}`,
-      where: `where: ${where}`,
+      where: `where: ${request.params['id']}`,
       when: `when: ${when}`
     });
     
