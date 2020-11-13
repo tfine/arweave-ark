@@ -1,0 +1,19 @@
+{
+  "name": "arweave-ark",
+  "version": "0.0.1",
+  "description": "A simple Node implementation of ARK for Arweave.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "base64url": "^3.0.1",
+    "express": "^4.17.1",
+    "pug": "^3.0.0",
+    "request": "^2.88.2"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "license": "MIT"
+}
