@@ -9,3 +9,7 @@
 - Having problems implementing colon and question marks due to express routing rules, need to figure out
 - Need to have a url that looks like http://something.net/ark:/Mix5mpHUB9eq7b5WUI1esAmJ6J_lD6Xmps28Zb40HyE/?
 - Perhaps use regular expressions?
+
+# Credit
+
+- Began with boilerplate express app from Glitch
