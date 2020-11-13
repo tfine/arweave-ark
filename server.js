@@ -17,10 +17,6 @@ app.get("/:id/", (request, response) => {
   response.redirect(`http://arweave.net/${request.params['id']}`)
 });
 
-app.get("/:id/", (request, response) => {
-  response.redirect(`http://arweave.net/${request.params['id']}`)
-});
-  
 app.get("/:id/question", (request, response) => {
   
   let what = "";
