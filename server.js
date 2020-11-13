@@ -3,19 +3,25 @@ const app = express();
 const base64url = require("base64url");
 let requester = require("request");
 
+// set arweave domain to use: TO-DO look for other options if fails?
+const arweave_domain = "arweave.net";
+
 // use pug templating
 app.set("view engine", "pug");
 
 app.use(express.static("public"));
 
-// 
+// information page
 app.get("", (request, response) => {
   response.render("index");  
 });
 
+// redirect request with an arweave id
 app.get("/:id/", (request, response) => {
   response.redirect(`http://arweave.net/${request.params['id']}`)
 });
+
+// if word question after arweave id, look from what, where, when, and who, display as metadata
 
 app.get("/:id/question", (request, response) => {
   
@@ -25,7 +31,9 @@ app.get("/:id/question", (request, response) => {
   let who = "";
 
   // create arweave url
-  var arweave_url = `https://arweave.net/tx/${request.params['id']}`;
+  var arweave_url = `https://${arweave_domain}/tx/${request.params['id']}`;
+  
+  // options for arweave direction
   
   let options = {
     method: "GET",
